@@ -28,9 +28,9 @@ const Manager = () => {
         if (form.site.length>3 && form.username.length>3 && form.password.length>3 ) {
             
             //if any such id exists in the db 1st delete it :step2
-            await fetch("http://localhost:3000/" ,{method:"DELETE",headers:{"content-Type":"application/json"}, body: JSON.stringify({id: form.id }) })
+            await fetch("https://password-manager-mongodb-version.onrender.com/" ,{method:"DELETE",headers:{"content-Type":"application/json"}, body: JSON.stringify({id: form.id }) })
             setPasswordArray([...passwordArray, { ...form, id: uuidv4() }]);//step3
-            await fetch("http://localhost:3000/" ,{method:"POST",headers:{"content-Type":"application/json"}, body: JSON.stringify({...form, id:uuidv4() }) })//step4
+            await fetch("https://password-manager-mongodb-version.onrender.com/" ,{method:"POST",headers:{"content-Type":"application/json"}, body: JSON.stringify({...form, id:uuidv4() }) })//step4
             // localStorage.setItem("passwords", JSON.stringify([...passwordArray, { ...form, id: uuidv4() }]));
 
             // console.log(...passwordArray, form);
@@ -66,7 +66,7 @@ const Manager = () => {
         if (confirmDel) {
             setPasswordArray(passwordArray.filter(item => item.id !== id));
             // localStorage.setItem("passwords", JSON.stringify(passwordArray.filter(item => item.id !== id)));
-            let res = await fetch("http://localhost:3000/" ,{method:"DELETE",headers:{"content-Type":"application/json"}, body: JSON.stringify({ id }) })
+            let res = await fetch("https://password-manager-mongodb-version.onrender.com/" ,{method:"DELETE",headers:{"content-Type":"application/json"}, body: JSON.stringify({ id }) })
             // console.log(...passwordArray, form);
             toast('Password Deleted!', {
                 position: "top-right",
